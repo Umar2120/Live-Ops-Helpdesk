@@ -1,0 +1,42 @@
+[
+  {
+    "id": "5",
+    "title": "API integration failure",
+    "description": "lmnlkjbl",
+    "status": "open",
+    "createdAt": "2026-05-21T07:09:59.304Z",
+    "lock": null
+  },
+  {
+    "id": "4",
+    "title": "Billing portal issue",
+    "description": "..m,/>",
+    "status": "open",
+    "createdAt": "2026-05-21T07:09:47.538Z",
+    "lock": null
+  },
+  {
+    "id": "3",
+    "title": "Subscription upgrade request",
+    "description": "mn,",
+    "status": "pending",
+    "createdAt": "2026-05-21T07:09:27.453Z",
+    "lock": null
+  },
+  {
+    "id": "1",
+    "title": "Billing portal returns a blank page",
+    "description": "Customer can sign in, but the billing portal renders empty after checkout redirect.",
+    "status": "open",
+    "createdAt": "2026-05-21T06:30:24.460Z",
+    "lock": null
+  },
+  {
+    "id": "2",
+    "title": "Priority customer cannot reset password",
+    "description": "Reset email arrives, but the token is rejected as expired immediately.",
+    "status": "pending",
+    "createdAt": "2026-05-21T06:44:24.460Z",
+    "lock": null
+  }
+]

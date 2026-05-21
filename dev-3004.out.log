@@ -1,0 +1,12 @@
+
+> live-ticket-board@1.0.0 dev
+> next dev -p 3004
+
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3004
+
+ ✓ Starting...
+ ✓ Ready in 1775ms
+ ✓ Compiled /api/tickets in 165ms (63 modules)
+ GET /api/tickets 200 in 756ms
+ ✓ Compiled in 53ms (63 modules)
