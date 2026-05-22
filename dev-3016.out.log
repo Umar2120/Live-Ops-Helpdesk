@@ -1,0 +1,15 @@
+
+> live-ticket-board@1.0.0 dev
+> next dev -p 3016
+
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3016
+
+ ✓ Starting...
+ ✓ Ready in 3.4s
+ ○ Compiling /api/socket ...
+ ✓ Compiled /api/socket in 629ms (68 modules)
+Socket.io server initialized
+ GET /api/socket 200 in 960ms
+ ✓ Compiled in 80ms (68 modules)
+ ✓ Compiled in 50ms (68 modules)

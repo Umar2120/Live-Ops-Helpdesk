@@ -129,7 +129,7 @@ export default function Home() {
 
       socket.on('disconnect', () => {
         setSocketId(null);
-        setConnectionLost(true);
+        setConnectionLost(socket.active);
       });
 
       socket.on('connect_error', () => {
