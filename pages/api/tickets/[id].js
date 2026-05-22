@@ -1,6 +1,9 @@
 import { updateTicket } from '../../../lib/ticket-store';
+import { applyCors } from '../../../lib/http-cors';
 
 export default function handler(req, res) {
+  if (applyCors(req, res)) return;
+
   const { id } = req.query;
 
   if (req.method === 'PUT') {

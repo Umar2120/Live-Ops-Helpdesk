@@ -2,7 +2,9 @@ import Head from 'next/head';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import io from 'socket.io-client';
 
-const socketUrl = '/';
+const apiBaseUrl = (process.env.NEXT_PUBLIC_API_URL || '').replace(/\/$/, '');
+const socketUrl = process.env.NEXT_PUBLIC_SOCKET_URL || apiBaseUrl || '/';
+const socketPath = process.env.NEXT_PUBLIC_SOCKET_PATH || '/api/socket';
 const statuses = ['open', 'pending', 'resolved'];
 const subjectOptions = [
   'Billing portal issue',
@@ -15,6 +17,10 @@ const subjectOptions = [
 
 function makeAgentName() {
   return `Agent ${Math.floor(100 + Math.random() * 900)}`;
+}
+
+function apiUrl(path) {
+  return `${apiBaseUrl}${path}`;
 }
 
 export default function Home() {
@@ -99,16 +105,18 @@ export default function Home() {
     setAgentName(initialAgentName);
 
     async function loadTickets() {
-      const res = await fetch('/api/tickets');
+      const res = await fetch(apiUrl('/api/tickets'));
       const data = await res.json();
       setTickets(data);
     }
 
     async function initSocket() {
-      await fetch('/api/socket');
+      await fetch(apiUrl('/api/socket'));
       const socket = io(socketUrl, {
-        path: '/api/socket',
+        path: socketPath,
         reconnection: true,
+        transports: ['websocket', 'polling'],
+        withCredentials: true,
       });
 
       socketRef.current = socket;
@@ -188,7 +196,7 @@ export default function Home() {
     setIsCreating(true);
 
     try {
-      const response = await fetch('/api/tickets', {
+      const response = await fetch(apiUrl('/api/tickets'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -310,7 +318,7 @@ export default function Home() {
       return;
     }
 
-    const response = await fetch(`/api/tickets/${activeTicket.id}`, {
+    const response = await fetch(apiUrl(`/api/tickets/${activeTicket.id}`), {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

@@ -1,6 +1,9 @@
 import { createTicket, getTickets } from '../../lib/ticket-store';
+import { applyCors } from '../../lib/http-cors';
 
 export default function handler(req, res) {
+  if (applyCors(req, res)) return;
+
   if (req.method === 'GET') {
     return res.status(200).json(getTickets());
   }
